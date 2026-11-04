@@ -8,9 +8,9 @@
 class Zigbox < Formula
   desc "Rootless container runtime for Linux, and for macOS through a small virtual machine"
   homepage "https://github.com/Zigbox/zigbox"
-  url "https://github.com/Zigbox/zigbox/releases/download/v0.2.0/zbx-0.2.0-macos-arm64.zip"
-  version "0.2.0"
-  sha256 "7abe59731cf0404b0e807c34ca1990f32348b753e380efb2b06956885e5dc726"
+  url "https://github.com/Zigbox/zigbox/releases/download/v0.3.0/zbx-0.3.0-macos-arm64.zip"
+  version "0.3.0"
+  sha256 "8fd95c4a721c7f20d29c1cf6f9019f7f226baef53cbef52cc819610ebf8c29da"
   # zbx is MIT; the binary carries a Linux kernel and VM tools under the GPL (sources on the
   # vm-kernel-6.18.59 and vm-deps-alpine-3.20 releases of Zigbox/zigbox).
   license all_of: ["MIT", "GPL-2.0-only"]
