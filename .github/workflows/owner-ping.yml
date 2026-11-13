@@ -1,0 +1,29 @@
+# Pings the owner on the "Owner needed" issue (#4) as github-actions[bot], so the @-mention
+# sends a notification; a comment from the owner's own account would not. Started by the
+# supervisor session with workflow_dispatch. The message goes through env, never into the script.
+name: owner-ping
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'One line: what the owner is needed for, and where'
+        required: true
+        type: string
+
+permissions:
+  issues: write
+
+jobs:
+  ping:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Comment on the Owner needed issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          MESSAGE: ${{ inputs.message }}
+        run: |
+          printf '@topwombat %s\n' "$MESSAGE" > "$RUNNER_TEMP/body.md"
+          gh issue comment 4 --body-file "$RUNNER_TEMP/body.md"
